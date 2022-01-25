@@ -7206,7 +7206,7 @@ namespace SharpView
                         NativeMethods.NetApiBufferFree(PtrInfo);
 
                         // try to extract out the machine SID by using the -500 account as a reference
-                        var MachineSid = (Members.FirstOrDefault(x => (x as LocalGroupMemberAPI).SID.IsRegexMatch(".*-500") || (x as LocalGroupMemberAPI).SID.IsRegexMatch(".*-501")) as LocalGroupMemberAPI).SID;
+                        var MachineSid = (Members.FirstOrDefault(x => (x as LocalGroupMemberAPI).SID.IsRegexMatch(".*-500") || (x as LocalGroupMemberAPI).SID.IsRegexMatch(".*-501")) as LocalGroupMemberAPI)?.SID;
                         if (MachineSid != null)
                         {
                             MachineSid = MachineSid.Substring(0, MachineSid.LastIndexOf('-'));
